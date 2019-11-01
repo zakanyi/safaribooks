@@ -1011,8 +1011,10 @@ class SafariBooks:
             os.remove(zip_file + ".zip")
 
         shutil.make_archive(zip_file, 'zip', self.BOOK_PATH)
-        os.rename(zip_file + ".zip", os.path.join(self.BOOK_PATH, self.book_id) + ".epub")
-
+        #os.rename(zip_file + ".zip", os.path.join(self.BOOK_PATH, self.book_id) + ".epub")
+        os.rename(zip_file + ".zip", os.path.join(os.path.join(PATH, "Books"), "".join(self.escape_dirname(self.book_title).split(",")[:2]) + ".epub"))
+        shutil.rmtree(self.BOOK_PATH)
+		
 
 # MAIN
 if __name__ == "__main__":
